@@ -1,23 +1,28 @@
-import { Button } from "antd"
+import { Button, DatePicker } from "antd"
 
 import { connect } from 'react-redux';
 import { setToken, a } from "@/redux/modules/global/action";
+import Router from "@/routers/index";
+import { BrowserRouter } from "react-router-dom";
+import AuthRouter from "./routers/util/authRouter";
 function App(props) {
   // eslint-disable-next-line react/prop-types
-  const {token, a, setToken} = props;
+  const { token, a, setToken } = props;
   return (
     <>
-    <h1>{token}</h1>
-      <Button type="primary" onClick={()=>{a(1)}}>按钮</Button>
-      <Button type="primary" onClick={()=>{setToken(1)}}>按钮</Button>
+      <BrowserRouter>
+        <AuthRouter>
+          <Router />
+        </AuthRouter>
+      </BrowserRouter>
     </>
   )
 }
 
 
-const mapStateToProps = (state) =>state.global
+const mapStateToProps = (state) => state.global
 
-const mapDispatchToProps = {setToken,a}
+const mapDispatchToProps = { setToken, a }
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)
