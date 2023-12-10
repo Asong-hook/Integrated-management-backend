@@ -1,15 +1,26 @@
 import { Navigate, useRoutes } from "react-router-dom";
 import Home from "../pages/home";
 import Login from "../pages/login";
+import Layout from '@/layout'
 
 export const rootRouter = [
     {
         path: "/",
-        element: <Navigate to="/login" />
+        element: <Navigate to="/index" />
     },
     {
-        path: "/index",
-        element: <Home />,
+        path: "",
+        element: <Layout />,
+        children: [
+            {
+                path: "/index",
+                element: <Home />,
+                meta: {
+                    title: "首页",
+                    key: "home"
+                }
+            }
+        ]
     },
     {
         path: "/login",

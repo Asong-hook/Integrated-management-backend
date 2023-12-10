@@ -4,7 +4,6 @@ import { listSimpleDictDatas } from '@/api/system/dict'
 export const loadDictDatas = (token) => {
 
     return (dispatch) => {
-        console.log("来？")
         listSimpleDictDatas().then(response => {
             console.log(response)
         })
