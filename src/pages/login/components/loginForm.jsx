@@ -178,7 +178,7 @@ const LoginForm = () => {
           </Button>
         </Form.Item>
       </Form>
-      <Verify visible={visible} setVisible={setVisible}/>
+      <Verify visible={true} setVisible={setVisible} />
     </div>
   );
 };
