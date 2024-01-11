@@ -2,6 +2,7 @@ import { Navigate, useRoutes } from "react-router-dom";
 import Home from "../pages/home";
 import Login from "../pages/login";
 import Layout from '@/layout'
+import NotFindPage from '../pages/notFinde'
 
 export const rootRouter = [
     {
@@ -33,6 +34,10 @@ export const rootRouter = [
     {
         path: "*",
         element: <Navigate to="/404" />
+    },
+    {
+        path: '/404',
+        element: <NotFindPage/>
     }
 ];
 

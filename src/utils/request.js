@@ -4,7 +4,7 @@ import { Modal, message, notification } from 'antd';
 import { refreshToken } from '@/api/login'
 const { confirm } = Modal;
 
-const proxy = 'http://api-dashboard.yudao.iocoder.cn';
+const proxy = 'http://101.37.64.50:48080';
 
 //错误码 提示
 const errorCode = {

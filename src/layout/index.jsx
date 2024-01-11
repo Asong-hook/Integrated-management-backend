@@ -1,5 +1,4 @@
 import { Outlet } from "react-router-dom";
-import SvgIcon from "../components/svgIcon";
 import { Layout } from "antd";
 import NavHead from './components/navHead'
 import LayoutMenu from './components/layoutMenu'

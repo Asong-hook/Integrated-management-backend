@@ -1,4 +1,4 @@
-import { Form, Input, Button, Tabs } from "antd";
+import { Form, Input, Button, Tabs, App } from "antd";
 import {
   UserOutlined,
   LockOutlined,
@@ -7,33 +7,23 @@ import {
 import { useMemo, useRef, useState, useEffect } from "react";
 import { setToken } from "@/utils/auth";
 import { useNavigate } from "react-router-dom";
-import Verify from '@/components/Verify'
+import {LoginApi} from '@/api/login'
+import Verify from "@/components/Verify";
 
 const LoginForm = () => {
   const [form] = Form.useForm();
   const navigate = useNavigate();
+  const {message} = App.useApp();
+  const [formValue, setFormValue] = useState({});
   const [loading, setLoading] = useState(false);
   const [loginType, setLoginType] = useState("login");
   const [mobileCodeTimer, setMobileCodeTimer] = useState(null);
   const [visible, setVisible] = useState(false); //用于控制验证码弹窗显示
   const timerRef = useRef(null);
+
   const onFinish = async (values) => {
-    console.log(values);
+    setFormValue(values);
     setVisible(true);
-    // try {
-    //   setLoading(true);
-    //   if (loginType === "login") {
-    //     setToken({
-    //       accessToken: 1,
-    //       refreshToken: 2,
-    //     });
-    //     navigate("/");
-    //   } else {
-    //     //
-    //   }
-    // } finally {
-    //   setLoading(false);
-    // }
   };
 
   const LgoinForm = useMemo(() => {
@@ -76,6 +66,23 @@ const LoginForm = () => {
 
   const sendCode = () => {
     setMobileCodeTimer(3);
+  };
+
+  //图形验证码验证成功后
+  const handleSuccess = (captchaParams) => {
+    console.log(captchaParams, formValue);
+    const username = formValue.username.trim();
+    const password = formValue.password;
+    const captchaVerification = captchaParams.captchaVerification;
+    if(loginType === 'login'){
+        setLoading(true);
+        LoginApi(username,password,captchaVerification).then((res) => {
+            console.log(res);
+            setToken(res.data);
+            message.success("登录成功")
+            navigate('/')
+        });
+    }
   };
 
   useEffect(() => {
@@ -174,11 +181,15 @@ const LoginForm = () => {
             loading={loading}
             icon={<UserOutlined />}
           >
-            登录
+            { loading ? '登录中...' : '登录'}
           </Button>
         </Form.Item>
       </Form>
-      <Verify visible={true} setVisible={setVisible} />
+      <Verify
+        visible={visible}
+        setVisible={setVisible}
+        handleSuccess={handleSuccess}
+      />
     </div>
   );
 };

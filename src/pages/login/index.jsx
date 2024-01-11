@@ -1,5 +1,6 @@
 import LoginForm from './components/loginForm'
 import "./index.less";
+import SvgIcon from '@/components/svgIcon'
 
 const Login = () => {
     return <div className="login-container">
@@ -8,6 +9,7 @@ const Login = () => {
                 <LoginForm />
             </div>
         </div>
+        <SvgIcon name="bug"/>
     </div>
 }
 

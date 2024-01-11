@@ -6,7 +6,7 @@ import App from './App.jsx'
 import { Provider } from 'react-redux';
 import store from '@/redux'
 import zhCN from "antd/lib/locale/zh_CN";
-import { ConfigProvider } from "antd";
+import { ConfigProvider, App as AntdApp } from "antd";
 import 'dayjs/locale/zh-cn';
 import "virtual:svg-icons-register";
 
@@ -18,7 +18,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           colorPrimary: '#00b96b',
         },
       }}>
-        <App />
+        <AntdApp>
+          <App />
+        </AntdApp>
       </ConfigProvider>
     </Provider>
   </React.StrictMode>,

@@ -14,14 +14,19 @@ const AuthRouter = (props) => {
     // eslint-disable-next-line react/prop-types
     const { children } = props
     const { pathname } = useLocation();
-    // * 判断当前路由是否需要访问权限(不需要权限直接放行)
-    if (WhiteRouterList.includes(pathname)) return children;
 
     // * 判断是否有Token (无token  直接 进入登录页)
     const token = getAccessToken();
     if (!token) {
+         // * 判断当前路由是否需要访问权限(不需要权限直接放行)
+        if (WhiteRouterList.includes(pathname)) return children;
+        //否则进入登录页
         return <Navigate to='/login' replace />;
     } else {
+        //如果有token  则不允许进入登录页  只能通过退出登录
+        if(pathname === '/login'){
+            return <Navigate to='/' replace />;
+        }
         // dispatch(loadDictDatas())
     }
     return children

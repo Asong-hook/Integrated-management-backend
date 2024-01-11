@@ -1,13 +1,11 @@
-import { Button, DatePicker } from "antd"
-
 import { connect } from 'react-redux';
 import { setToken, a } from "@/redux/modules/global/action";
 import Router from "@/routers/index";
 import { BrowserRouter } from "react-router-dom";
 import AuthRouter from "./routers/util/authRouter";
-function App(props) {
+function App() {
   // eslint-disable-next-line react/prop-types
-  const { token, a, setToken } = props;
+  // const { token, a, setToken } = props;
   return (
     <>
       <BrowserRouter>
@@ -18,11 +16,6 @@ function App(props) {
     </>
   )
 }
-
-
 const mapStateToProps = (state) => state.global
-
 const mapDispatchToProps = { setToken, a }
-
-
 export default connect(mapStateToProps, mapDispatchToProps)(App)

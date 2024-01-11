@@ -1,4 +1,39 @@
 .verify_box {
-    padding: 2px;
+  padding: 2px;
+  position: relative;
+
+  .verify_img_panel {
+    width: 400px;
+    height: 200px;
     position: relative;
+  }
+
+  .verify_bar_box {
+    width: 400px;
+    height: 40px;
+    position: relative;
+    background: #ffffff;
+    box-sizing: content-box;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-top: 4px;
+    .verify_bar_btn {
+      width: 40px;
+      height: 40px;
+      background-color: rgb(255, 255, 255);
+      left: 0px;
+      box-shadow: 0 0 2px #888888;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .moveStyle{
+        position: absolute;
+        height: 100%;
+        background-color: #5cb85c;
+        top: 0px
+    }
+  }
 }

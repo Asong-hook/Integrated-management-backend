@@ -12,6 +12,7 @@
   "dependencies": {
     "antd": "^5.11.5",
     "axios": "^1.6.2",
+    "crypto-js": "^4.2.0",
     "dayjs": "^1.11.10",
     "immer": "^10.0.3",
     "react": "^18.2.0",
