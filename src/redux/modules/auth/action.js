@@ -4,8 +4,11 @@ import { listSimpleDictDatas } from '@/api/system/dict'
 export const loadDictDatas = (token) => {
 
     return (dispatch) => {
-        listSimpleDictDatas().then(response => {
-            console.log(response)
+        return new Promise((resolve)=>{
+            listSimpleDictDatas().then(response => {
+                console.log(response)
+                resolve(response)
+            })
         })
     }
 }

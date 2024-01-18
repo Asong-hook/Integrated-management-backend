@@ -1,4 +1,4 @@
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 import { setToken, a } from "@/redux/modules/global/action";
 import Router from "@/routers/index";
 import { BrowserRouter } from "react-router-dom";
@@ -14,8 +14,8 @@ function App() {
         </AuthRouter>
       </BrowserRouter>
     </>
-  )
+  );
 }
-const mapStateToProps = (state) => state.global
-const mapDispatchToProps = { setToken, a }
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+const mapStateToProps = (state) => state.global;
+const mapDispatchToProps = { setToken, a };
+export default connect(mapStateToProps, mapDispatchToProps)(App);

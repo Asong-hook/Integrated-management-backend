@@ -53,3 +53,19 @@ export function reqCheck(data) {
     data,
   });
 }
+
+// 获取用户详细信息
+export function getInfoApi() {
+  return request({
+    url: "/system/auth/get-permission-info",
+    method: "get",
+  });
+}
+
+//退出登录接口
+export function logoutApi() {
+  return request({
+    url: "/system/auth/logout",
+    method: "post",
+  });
+}
